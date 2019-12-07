@@ -7,6 +7,7 @@ use rumble::api::{BDAddr, Central, Peripheral, UUID};
 use rumble::bluez::manager::Manager;
 
 pub fn main() {
+    println!("Trying to get all gatt services from the BLE device");
     let mut addrarr = [0x24u8, 0x35u8, 0xccu8, 0x12u8, 0xd6u8, 0x34u8];
     addrarr.reverse();
     let light_addr = BDAddr {
@@ -22,20 +23,19 @@ pub fn main() {
 
     println!("Adapter: {}, {}", adapter.addr, adapter.is_up());
     // reset the adapter -- clears out any errant state
-    adapter = manager.down(&adapter).unwrap();
-    adapter = manager.up(&adapter).unwrap();
+    adapter = manager.down(&adapter).expect("Could not switch BT adapter off");
+    adapter = manager.up(&adapter).expect("Could not switch BT adapter on");
     println!("Adapter restarted");
 
     // connect to the adapter
-    let central = adapter.connect().unwrap();
-    println!("Adapter connected");
+    let central = adapter.connect().expect("Could not connect to adapter");
 
     // start scanning for devices
     central.start_scan().unwrap();
     // instead of waiting, you can use central.on_event to be notified of
     // new devices
     println!("Scanning...");
-    for i in 1..15 {
+    for i in 1..6 {
         thread::sleep(Duration::from_secs(1));
         print!("{} ", i);
         io::stdout().flush().unwrap();
@@ -46,16 +46,10 @@ pub fn main() {
             println!("THIS");
         }
     }
-    // find the device we're interested in
-    let light = central
-        .peripherals()
-        .into_iter()
-        .find(|p| p.address() == light_addr)
-        .unwrap();
-    println!("Peripheral {}", light);
+    let light = central.peripheral(light_addr).expect("Light not found");
 
     // connect to the device
-    light.connect().unwrap();
+    light.connect().expect("Couldn't connect to light");
     println!("Connected.");
     // discover characteristics
     light.discover_characteristics().unwrap();
