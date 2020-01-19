@@ -1,10 +1,12 @@
 extern crate rumble;
+extern crate clap;
 
 use std::io::{self, Write};
 use std::thread;
 use std::time::Duration;
 use rumble::api::{BDAddr, Central, Peripheral, UUID};
 use rumble::bluez::manager::Manager;
+use clap::{Arg, App, SubCommand};
 
 pub fn main() {
     let mut addrarr = [0x24u8, 0x35u8, 0xccu8, 0x12u8, 0xd6u8, 0x34u8];
@@ -76,7 +78,7 @@ pub fn main() {
     let off_cmd = vec![0x01, 0x01, 0x01, 0x00];
     #[warn(unused_must_use)]
     println!("Turn lights off");
-    light.command(&cmd_char, &off_cmd);
+    // light.command(&cmd_char, &off_cmd);
     //     // dance party
     //     let mut rng = thread_rng();
     //     for _ in 0..20 {

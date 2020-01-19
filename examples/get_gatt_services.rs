@@ -31,46 +31,43 @@ pub fn main() {
     let central = adapter.connect().expect("Could not connect to adapter");
 
     // start scanning for devices
-    central.start_scan().unwrap();
+    central.start_scan().expect("Could not start scanning");
     // instead of waiting, you can use central.on_event to be notified of
     // new devices
     println!("Scanning...");
-    for i in 1..6 {
+    // let light: Option<dynPeripheral>;
+    let light = loop {
         thread::sleep(Duration::from_secs(1));
-        print!("{} ", i);
         io::stdout().flush().unwrap();
-    }
-    for peripheral in central.peripherals().into_iter() {
-        println!("Found: {}", peripheral);
-        if peripheral.address() == light_addr {
-            println!("THIS");
+        let light_ = central.peripheral(light_addr);
+        if light_.is_some() {
+            break light_.unwrap();
         }
-    }
-    let light = central.peripheral(light_addr).expect("Light not found");
+    };
 
     // connect to the device
     light.connect().expect("Couldn't connect to light");
     println!("Connected.");
     // discover characteristics
     light.discover_characteristics().unwrap();
-
     println!("Discovered characteristics");
-    // find the characteristic we want
-    let characteristics = light.characteristics();
-    for characteristic in characteristics.iter() {
-        println!("Char: {}", characteristic);
-    }
-    let cmd_char = characteristics.iter().find(|c| c.uuid == UUID::B16(0xFFF1)).unwrap();
-    println!("Turn lights on");
-    let on_cmd = vec![0x01, 0x01, 0x01, 0x01];
-    light.command(&cmd_char, &on_cmd);
 
-    #[warn(unused_must_use)]
-    thread::sleep(Duration::from_secs(2));
-    let off_cmd = vec![0x01, 0x01, 0x01, 0x00];
-    #[warn(unused_must_use)]
-    println!("Turn lights off");
-    light.command(&cmd_char, &off_cmd);
+    for char_ in light.characteristics().iter() {
+        println!("Char: {}", char_);
+        // let content = light.read(char_).unwrap_or_default();
+        println!("{:x?}", light.read(char_).unwrap_or_default());
+    }
+    // let cmd_char = characteristics.iter().find(|c| c.uuid == UUID::B16(0xFFF1)).unwrap();
+    // println!("Turn lights on");
+    // let on_cmd = vec![0x01, 0x01, 0x01, 0x01];
+    // #[warn(unused_must_use)]
+    // light.command(&cmd_char, &on_cmd);
+
+    // thread::sleep(Duration::from_secs(2));
+    // let off_cmd = vec![0x01, 0x01, 0x01, 0x00];
+    // println!("Turn lights off");
+    // #[warn(unused_must_use)]
+    // light.command(&cmd_char, &off_cmd);
     //     // dance party
     //     let mut rng = thread_rng();
     //     for _ in 0..20 {
@@ -78,4 +75,5 @@ pub fn main() {
     //        light.command(&cmd_char, &color_cmd).unwrap();
     //        thread::sleep(Duration::from_millis(200));
     //    }
+    light.disconnect().expect("Failure on disconnect");
 }
