@@ -54,26 +54,10 @@ pub fn main() {
 
     for char_ in light.characteristics().iter() {
         println!("Char: {}", char_);
+        println!("Flags: {:?}", char_.properties);
         // let content = light.read(char_).unwrap_or_default();
-        println!("{:x?}", light.read(char_).unwrap_or_default());
+        // println!("{:x?}", light.read(char_).unwrap_or_default());
+        // println!("{:x?}", light.read(char_).unwrap_or_default());
     }
-    // let cmd_char = characteristics.iter().find(|c| c.uuid == UUID::B16(0xFFF1)).unwrap();
-    // println!("Turn lights on");
-    // let on_cmd = vec![0x01, 0x01, 0x01, 0x01];
-    // #[warn(unused_must_use)]
-    // light.command(&cmd_char, &on_cmd);
-
-    // thread::sleep(Duration::from_secs(2));
-    // let off_cmd = vec![0x01, 0x01, 0x01, 0x00];
-    // println!("Turn lights off");
-    // #[warn(unused_must_use)]
-    // light.command(&cmd_char, &off_cmd);
-    //     // dance party
-    //     let mut rng = thread_rng();
-    //     for _ in 0..20 {
-    //        let color_cmd = vec![0x56, rng.gen(), rng.gen(), rng.gen(), 0x00, 0xF0, 0xAA];
-    //        light.command(&cmd_char, &color_cmd).unwrap();
-    //        thread::sleep(Duration::from_millis(200));
-    //    }
     light.disconnect().expect("Failure on disconnect");
 }
