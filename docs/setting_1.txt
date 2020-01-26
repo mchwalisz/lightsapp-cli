@@ -1,0 +1,40 @@
+Char: handle: 0x0002, char properties: 0x02, char value handle: 0x0003, end handle: 0xFFFF, uuid: 2A:00
+[b, 4c, 45, 44, 2d, 34, 2d, 30, 32, 2d, 30, 30, 30, 30, 30, 30, 30, 30]
+Char: handle: 0x0004, char properties: 0x02, char value handle: 0x0005, end handle: 0xFFFF, uuid: 2A:01
+[b, 0, 0]
+Char: handle: 0x0006, char properties: 0x0A, char value handle: 0x0007, end handle: 0xFFFF, uuid: 2A:02
+[b, 0]
+Char: handle: 0x0008, char properties: 0x08, char value handle: 0x0009, end handle: 0xFFFF, uuid: 2A:03
+[1, a, 9, 0, 2]
+Char: handle: 0x000A, char properties: 0x02, char value handle: 0x000B, end handle: 0xFFFF, uuid: 2A:04
+[b, 50, 0, a0, 0, 0, 0, e8, 3]
+Char: handle: 0x000D, char properties: 0x20, char value handle: 0x000E, end handle: 0xFFFF, uuid: 2A:05
+[1, a, e, 0, 2]
+Char: handle: 0x0011, char properties: 0x02, char value handle: 0x0012, end handle: 0xFFFF, uuid: 2A:23
+[b, 34, d6, 12, 0, 0, cc, 35, 24]
+Char: handle: 0x0013, char properties: 0x02, char value handle: 0x0014, end handle: 0xFFFF, uuid: 2A:24
+[b, 4d, 6f, 64, 65, 6c, 20, 4e, 75, 6d, 62, 65, 72]
+Char: handle: 0x0015, char properties: 0x02, char value handle: 0x0016, end handle: 0xFFFF, uuid: 2A:25
+[b, 53, 65, 72, 69, 61, 6c, 20, 4e, 75, 6d, 62, 65, 72]
+Char: handle: 0x0017, char properties: 0x02, char value handle: 0x0018, end handle: 0xFFFF, uuid: 2A:26
+[b, 46, 69, 72, 6d, 77, 61, 72, 65, 20, 52, 65, 76, 69, 73, 69, 6f, 6e]
+Char: handle: 0x0019, char properties: 0x02, char value handle: 0x001A, end handle: 0xFFFF, uuid: 2A:27
+[b, 48, 61, 72, 64, 77, 61, 72, 65, 20, 52, 65, 76, 69, 73, 69, 6f, 6e]
+Char: handle: 0x001B, char properties: 0x02, char value handle: 0x001C, end handle: 0xFFFF, uuid: 2A:28
+[b, 53, 6f, 66, 74, 77, 61, 72, 65, 20, 52, 65, 76, 69, 73, 69, 6f, 6e]
+Char: handle: 0x001D, char properties: 0x02, char value handle: 0x001E, end handle: 0xFFFF, uuid: 2A:29
+[b, 4d, 61, 6e, 75, 66, 61, 63, 74, 75, 72, 65, 72, 20, 4e, 61, 6d, 65]
+Char: handle: 0x001F, char properties: 0x02, char value handle: 0x0020, end handle: 0xFFFF, uuid: 2A:2A
+[b, fe, 0, 65, 78, 70, 65, 72, 69, 6d, 65, 6e, 74, 61, 6c]
+Char: handle: 0x0021, char properties: 0x02, char value handle: 0x0022, end handle: 0xFFFF, uuid: 2A:50
+[b, 1, d, 0, 0, 0, 10, 1]
+Char: handle: 0x0024, char properties: 0x0A, char value handle: 0x0025, end handle: 0xFFFF, uuid: FF:F1
+[b, 33, 33]
+Char: handle: 0x0027, char properties: 0x02, char value handle: 0x0028, end handle: 0xFFFF, uuid: FF:F2
+[b, 33, 33]
+Char: handle: 0x002A, char properties: 0x08, char value handle: 0x002B, end handle: 0xFFFF, uuid: FF:F3
+[1, a, 2b, 0, 2]
+Char: handle: 0x002D, char properties: 0x10, char value handle: 0x002E, end handle: 0xFFFF, uuid: FF:F4
+[1, a, 2e, 0, 2]
+Char: handle: 0x0031, char properties: 0x02, char value handle: 0x0032, end handle: 0xFFFF, uuid: FF:F5
+[1, a, 32, 0, 5]
